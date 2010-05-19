@@ -1,4 +1,9 @@
 spamEater is a Python program written to get data from an NXT brick running
 spamOSEK (Well, I suppose even nxtOSEK should work without any problem).
 
+On the NXT there should be some kind of code to send well formed packets.
+
 The project name comes from Metal Gear Solid 3: Snake Eater.
+
+Good day,
+Jazzinghen
