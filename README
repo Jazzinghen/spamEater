@@ -2,6 +2,24 @@ spamEater is a Python program written to get data from an NXT brick running
 spamOSEK (Well, I suppose even nxtOSEK should work without any problem).
 
 On the NXT there should be some kind of code to send well formed packets.
+Since this project is still under heavy development I'll give you some advice to
+make it work for your needs.
+
+All right. As you might know (I've found it not long ago) the struct.unpack
+function takes as input two strings. The first is the pattern to use to unpack
+the data stream, the second are the bytes you want to unpack. Let's say we need
+to unpack a stream that contains an Unsigned INT and an INT (The rest are
+zeroes). These streams come from the NXT in "packets" of 64bytes.
+As you might see at lines 20 - 21:
+
+    spam_buffer = spam.recv(64)
+    spam_buffer = str(struct.unpack('Ii14i', spam_buffer)[:2])
+    
+We recieve the "packet" and then we unpack it using struct.unpack. In this case
+we are parsing 64bytes as an unsigned INT and 15 INTs and then we consider only
+the first two values (Because the other 14 are Zeroes). If you want to change
+this simply use in a python console "help struct" and use the keywords for
+parsing listed there.
 
 The project name comes from Metal Gear Solid 3: Snake Eater.
 
